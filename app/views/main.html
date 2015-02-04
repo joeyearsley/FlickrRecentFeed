@@ -1,0 +1,35 @@
+<div infinite-scroll='loadMore()'>
+	<div class="sticky" >
+		<div class="center" >
+			<span class="search"> Search:</span>
+			<input ng-model="searchText.Tags" class="search-box"/>
+		</div>
+
+	</div>
+
+	<div class="pad-div"></div>
+
+	<div ng-repeat="data in dataSet track by data.id | search:searchText.Tags" class="post" >
+		<div class="image_row">
+			<a ng-href="/#/{{data.id}}" >
+				<img ng-src="{{data.media.m}}" alt="Image" class="list-images"  />
+			</a>
+		</div>
+		<div class="content_rows">  
+			<h4 class="padTop">
+				<a ng-bind="data.title" ng-href="/#/{{data.id}}" class="ellipsis" >
+				</a>
+			</h4>
+			<div class="padTop">
+				<span ng-bind="timeDifference.workOut(data.published)" class="padRight" ng-show="win < 800"></span>
+			</div>
+			<div class="padTop">
+				<a ng-href='http://www.flickr.com/photos/{{data.author_id}}' ng-bind="data.author | displayAuthor" class="padRight"> 
+				</a>
+				<span ng-bind="timeDifference.workOut(data.published)" class="padRight" ng-show="win > 799"></span>
+				<a ng-href="{{data.link}}">View On Flickr</a>
+			</div>
+		</div>
+	</div>
+</div>
+

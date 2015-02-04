@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="top-div"><h1><a ng-bind="data.title" ng-href="{{data.link}}"></a> </h1></div>
+	<div class="back-div">
+		<button type="button" class="back-button" back-button>
+			<span class="glyphicon glyphicon-arrow-left"></span> back
+		</button>
+	</div>
+</div>
+<div class="row">
+	<a ng-href='http://www.flickr.com/photos/{{data.author_id}}' ng-bind="data.author | displayAuthor" class="padDetail" > </a>
+	<span>  |  </span>
+	<span ng-bind="timeDifference.workOut(data.published)" class="padDetail"></span>
+
+</div>
+<div class="detail" >
+	<div class="image_detail">
+		<img ng-src="{{data.media.m}}" alt="Image" class="desc" />
+	</div>
+	<div class="detail_description" >
+		<p ng-bind-html="data.description | description"></p>
+		<p> Tags: 
+			<span>
+				<a ng-repeat="tag in data.tags | tags " ng-href='https://www.flickr.com/search/?tags={{tag}}' 
+				ng-bind="tag" add-a-space-between class="inline-heading"> 
+			</a>
+		</span>
+
+	</p>
+
+</div>
